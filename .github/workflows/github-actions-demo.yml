@@ -25,4 +25,5 @@ jobs:
           echo ${{github.ref_name}}
       - run: |
           echo "This is a listing of all the files in the repository:"
+          pwd
           tree
