@@ -2,23 +2,25 @@ name: Github Actions Demo
 run-name: Demo
 
 on:
-  push: 
-    branches: [ main ]
-    paths-ignore: [ /.github/** ]
-  
-    
+  push:
+    branches: [main]
+    paths-ignore: [/.github/**]
   pull_request:
-    branches: [ main ]
-  
+    branches: [main]
   schedule:
-    - cron: '15 6 * * 0'
-  workflow_dispatch: 
-      
+    - cron: "15 6 * * 0"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ${{github.event_name}}
-    - run: echo ${{github.ref_name}}
-    - run: tree
+      - run: |
+          echo "triggered by"
+          echo ${{github.event_name}}
+      - run: |
+          echo "Based on the branch:"
+          echo ${{github.ref_name}}
+      - run: |
+          echo "This is a listing of all the files in the repository:"
+          tree
