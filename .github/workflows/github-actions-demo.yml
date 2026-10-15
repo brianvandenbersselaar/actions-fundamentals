@@ -3,14 +3,11 @@ run-name: Demo
 
 on:
   push: 
-    branches:
-      - main
-    paths-ignore:
-      - .github
+    branches: [ main ]
+    paths-ignore: [ .github/** ]
   
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
   
   schedule:
     - cron: '15 6 * * 0'
