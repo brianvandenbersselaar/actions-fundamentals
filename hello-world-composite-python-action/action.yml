@@ -1,2 +1,18 @@
 name: hello-world
-run-name: Hello world from Python
+description: A hello world composite action written in Python
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v7.0.0
+      with:
+        python-version: "3.x"
+    - name: Run a Python script
+      id: run-python
+      shell: python
+      run: |
+        print("Hello from Python!")
+        print("Python version:")
+        import sys
+        print(sys.version)
