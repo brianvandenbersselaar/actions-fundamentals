@@ -5,6 +5,7 @@ on:
 
 permissions:
     contents: read
+
 jobs:
     greet:
         runs-on: ubuntu-26.04
