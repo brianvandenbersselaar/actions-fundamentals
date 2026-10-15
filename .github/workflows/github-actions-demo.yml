@@ -1,6 +1,11 @@
 name: Github Actions Demo
 run-name: Demo
 
+permissions:
+  contents: read
+
+cache-mode: none
+
 on:
   push:
     branches: [main]
@@ -10,6 +15,11 @@ on:
   schedule:
     - cron: "15 6 * * 0"
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        type: environment
+        required: true
 
 jobs:
   build:
@@ -28,3 +38,37 @@ jobs:
           tree
         env:
           REPOSITORY: ${{ github.repository }}
+  test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment: Test
+    steps:
+      - run: |
+          echo "Testing..."
+  load-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment: Load-Test
+    steps:
+      - run: |
+          echo "Testing..."
+          sleep 15
+  production:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && inputs.environment == 'Production'
+    needs: [test, load-test]
+    environment:
+      name: Production
+      url: https://writeabout.net
+    steps:
+      - run: |
+          echo "Step 1 deploying to production..."
+          sleep 10
+          echo "Step 2 deploying to production..."
+          sleep 10
+          echo "Step 3 deploying to production..."
+          sleep 10
+          echo "Step 4 deploying to production..."
+          sleep 10
+          echo "Step 5 deploying to production..."
+          sleep 10
