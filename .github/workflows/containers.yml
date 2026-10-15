@@ -1,0 +1,13 @@
+name: container demo
+run-name: container demo
+permissions:
+    contents: read
+
+on:
+    workflow_dispatch:
+
+jobs:
+    step-container:
+        uses: docker://alpine:3.22
+        with:
+            entrypoint: cat /etc/os-release | echo
