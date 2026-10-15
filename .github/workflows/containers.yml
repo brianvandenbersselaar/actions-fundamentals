@@ -8,6 +8,8 @@ on:
 
 jobs:
     step-container:
-        uses: docker://alpine:3.22
-        with:
-            entrypoint: cat /etc/os-release | echo
+        runs-on: ubuntu-latest
+        steps:
+            - uses: docker://alpine:3.22
+              with:
+                  entrypoint: cat /etc/os-release | echo
