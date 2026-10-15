@@ -6,7 +6,7 @@ print(f"Hello {who}.")
 
 # Workflow command: show an annotation in the run summary
 print(f"::notice::Greeted {who}")
-print("Beepboop")
+print("Beepboop test")
 
 # Write outputs to the file in GITHUB_OUTPUT (not ::set-output)
 with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
