@@ -10,7 +10,11 @@ jobs:
     step-container:
         runs-on: ubuntu-latest
         steps:
-            - uses: docker://alpine:3.22
+            - name: On the runner
+              run: cat /etc/os-release
+
+            - name: In alpine
+              uses: docker://alpine:3.22
               with:
                   entrypoint: /bin/sh
                   args: -c "cat /etc/os-release"
