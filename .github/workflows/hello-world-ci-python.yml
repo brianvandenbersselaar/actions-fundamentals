@@ -21,8 +21,8 @@ jobs:
             - id: hello-action
               uses: $/hello-world-composite-python-action
               with:
-                  who-to-greet: "@jessehouwing"
-            - run: echo "The time was $env:TIME when the action said hello"
-              shell: pwsh
+                  who-to-greet: "@brianvandenbersselaar"
+            - run: echo "The time was $TIME when the action said hello"
+              shell: bash
               env:
                   TIME: ${{ steps.hello-action.outputs.time }}
