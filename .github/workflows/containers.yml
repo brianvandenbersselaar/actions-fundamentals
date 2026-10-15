@@ -12,4 +12,4 @@ jobs:
         steps:
             - uses: docker://alpine:3.22
               with:
-                  entrypoint: cat /etc/os-release | echo
+                  entrypoint: echo /etc/os-release
