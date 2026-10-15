@@ -26,4 +26,5 @@ jobs:
       - run: |
           echo "This is a listing of all the files in the repository:"
           pwd
+          cd ..
           tree
