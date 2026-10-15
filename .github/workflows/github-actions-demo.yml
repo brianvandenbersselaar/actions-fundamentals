@@ -24,7 +24,7 @@ jobs:
           echo "Based on the branch:"
           echo ${{github.ref_name}}
       - run: |
-          echo "This is a listing of all the files in the repository:"
-          pwd
-          cd ..
+          echo "The repository $REPOSITORY contains the following files:"
           tree
+        env:
+          REPOSITORY: ${{ github.repository }}
